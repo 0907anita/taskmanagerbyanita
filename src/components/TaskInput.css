@@ -1,0 +1,48 @@
+.task-input-container {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .task-input-container input {
+    flex: 1;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    transition: border 0.3s;
+  }
+  
+  .task-input-container input:focus {
+    outline: none;
+    border-color: #666;
+  }
+  
+  .task-input-container button {
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .task-input-container button:hover {
+    background-color: #0056b3;
+  }
+  
+  body.dark .task-input-container input {
+    background-color: #222;
+    color: #f0f0f0;
+    border-color: #555;
+  }
+  
+  body.dark .task-input-container button {
+    background-color: #1a73e8;
+  }
+  
+  body.dark .task-input-container button:hover {
+    background-color: #155ab6;
+  }
+  
