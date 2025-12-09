@@ -7,6 +7,7 @@ interface TaskContextType {
   addTask: (title: string) => void;
   toggleTask: (id: number) => void;
   deleteTask: (id: number) => void;
+  markAllCompleted: ()=> void;
 }
 
 const TaskContext = createContext<TaskContextType | undefined>(undefined);
@@ -42,12 +43,18 @@ export const TaskProvider = ({ children }: TaskProviderProps) => {
     );
   }, [setTasks]);
 
+  const markAllCompleted = useCallback(()=>{
+setTasks(prev=>
+      prev.map(task=> ({...task, completed: true}))
+      )
+  },[setTasks])
+
   const deleteTask = useCallback((id: number) => {
     setTasks(prev => prev.filter(task => task.id !== id));
   }, [setTasks]);
 
   return (
-    <TaskContext.Provider value={{ tasks, addTask, toggleTask, deleteTask }}>
+    <TaskContext.Provider value={{ tasks, addTask, toggleTask, deleteTask,markAllCompleted }}>
       {children}
     </TaskContext.Provider>
   );

@@ -3,8 +3,8 @@ import TaskItem from './TaskItem';
 import { useTasks } from '../context/TaskContext';
 
 const TaskList = () => {
-  const { tasks, toggleTask, deleteTask } = useTasks();
-  const [filter, setFilter] = useState<'all' | 'completed' | 'pending'>('all');
+  const { tasks, toggleTask, deleteTask, markAllCompleted } = useTasks();
+  const [filter, setFilter] = useState<'all' | 'completed' | 'pending' | 'allmarkedcompleted'>('all');
 
   const filteredTasks = useMemo(() => {
     return tasks.filter(task => {
@@ -20,6 +20,7 @@ const TaskList = () => {
         <button onClick={() => setFilter('all')}>All</button>
         <button onClick={() => setFilter('completed')}>Completed</button>
         <button onClick={() => setFilter('pending')}>Pending</button>
+        <button onClick={markAllCompleted}>All Mark Completed</button>
       </div>
 
       <ul>
